@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Product;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -8,6 +9,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\base\InvalidParamException;
+use yii\data\Pagination;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -72,7 +74,24 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //Action dlia glavnoy stranicu
+        $query = Product::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+
+        $products = $query->orderBy('name')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+
+        return $this->render('index', [
+            'products' => $products,
+            'pagination' => $pagination,
+        ]);
     }
 
     /**

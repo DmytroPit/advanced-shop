@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($model, 'name') ?>
         <?= $form->field($model, 'description') ?>
         <?= $form->field($model, 'price') ?>
-    
+
         <div class="form-group">
             <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
         </div>
