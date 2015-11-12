@@ -12,7 +12,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_product')->textInput() ?>
+
+
+
+    <?= $form->field($model, 'id_product') ?>
 
     <?= $form->field($model, 'number')->textInput() ?>
 
@@ -20,10 +23,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'customer_phone')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'order_time')->textInput() ?>
+
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Купить' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

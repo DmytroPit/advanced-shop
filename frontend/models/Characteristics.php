@@ -12,8 +12,8 @@ use Yii;
  * @property integer $id_product
  * @property string $value
  *
- * @property Product $idProduct
- * @property CharacteristicsTitle $idTitle
+ * @property Product $product
+ * @property CharacteristicsTitle $characteristicTitle
  */
 class Characteristics extends \yii\db\ActiveRecord
 {
@@ -53,7 +53,7 @@ class Characteristics extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdProduct()
+    public function getProduct()
     {
         return $this->hasOne(Product::className(), ['id' => 'id_product']);
     }
@@ -61,7 +61,7 @@ class Characteristics extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdTitle()
+    public function getCharacteristicTitle()
     {
         return $this->hasOne(CharacteristicsTitle::className(), ['id' => 'id_title']);
     }

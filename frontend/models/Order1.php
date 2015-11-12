@@ -47,10 +47,10 @@ class Order1 extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_product' => 'Id Product',
-            'number' => 'Number',
-            'customer_name' => 'Customer Name',
-            'customer_phone' => 'Customer Phone',
-            'order_time' => 'Order Time',
+            'number' => 'Количество',
+            'customer_name' => 'Ваше имя',
+            'customer_phone' => 'Номер телефона',
+            'order_time' => 'Время совершения заказа',
         ];
     }
 

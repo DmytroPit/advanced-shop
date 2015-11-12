@@ -58,14 +58,36 @@ class Order1Controller extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+//    public function actionCreate()
+//    {
+//        $model = new Order1();
+//
+//        if ($model->load(Yii::$app->request->post())) {
+//            $model->order_time = date('Y-m-d h:m:s');
+////            $model->id = ;
+//            $model->save();
+//            return $this->redirect(['view', 'id' => $model->id]);
+//        } else {
+//            return $this->renderAjax('create', [
+//                'model' => $model,
+//            ]);
+//        }
+//    }
+
     public function actionCreate()
     {
         $model = new Order1();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post())) {
+            $model->order_time = date('Y-m-d h:m:s');
+            $model->save();
+            return $this->redirect(\Yii::$app->urlManager->createUrl(['product/view', 'id' => $model->id_product]));
+//            return $this->redirect(Yii::$app->urlManager->createUrl("test/show"));
+//            $this->redirect(\Yii::$app->urlManager->createUrl("test/show"));
+//            ['value'=>Url::toRoute(['order1/create', 'id_product' => '{$model->id}']
         } else {
-            return $this->render('create', [
+            $model->id_product = Yii::$app->request->get('id_product');
+            return $this->renderAjax('create', [
                 'model' => $model,
             ]);
         }
